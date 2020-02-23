@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Permisos[0].Id)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Permisos[0].NombreEmpleado)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Permisos[0].ApellidoEmpleado)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Permisos[0].FechaPermiso)
+            </th>
+            <th scope="col">
+                Tipo de Permiso
+            </th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Permisos)
+        {
+            <tr scope="row">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreEmpleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApellidoEmpleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaPermiso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoPermiso.Descripcion)
+                </td>
+                <td>
+                    <a class="btn btn-danger"
+                       asp-page="./EliminarPermiso"
+                       asp-route-id="@item.Id">
+                        Eliminar Permiso
+                    </a>
+
+                    <a class="btn btn-outline-primary"
+                       asp-page="./EditarPermiso"
+                       asp-route-id="@item.Id">
+                        Editar Permiso
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" 
+   asp-page="./SolicitarPermiso">
+    Solicitar Permiso
+</a>
+

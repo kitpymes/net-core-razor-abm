@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Permisos</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-dark bg-dark py-3">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">
+                <img src="https://kitpymes.com/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                Permisos
+            </a>
+        </nav>
+    </header>
+    <!-- /Header -->
+
+    <main role="main" class="py-3 container-fluid">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <nav class="navbar fixed-bottom navbar-dark bg-dark py-2">
+            <div class="navbar-brand mx-auto text-white-50">
+                © @DateTime.Now.Year Copyright <a class="navbar-brand mx-auto" href="https://kitpymes.com"> kitpymes.com</a>
+            </div>
+        </nav>
+    </footer>
+    <!-- /Footer -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
