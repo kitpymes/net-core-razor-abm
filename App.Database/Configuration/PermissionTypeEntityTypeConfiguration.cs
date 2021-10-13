@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace App.Database
 {
-    public sealed class TipoPermisoEntityTypeConfiguration : IEntityTypeConfiguration<Models.TipoPermiso>
+    public sealed class PermissionTypeEntityTypeConfiguration : IEntityTypeConfiguration<Models.PermissionType>
     {
-        public void Configure(EntityTypeBuilder<Models.TipoPermiso> builder)
+        public void Configure(EntityTypeBuilder<Models.PermissionType> builder)
         {
-            builder.ToTable("TipoPermiso").HasKey(x => x.Id);
+            builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
 

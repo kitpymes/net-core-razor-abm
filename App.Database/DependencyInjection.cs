@@ -24,7 +24,8 @@
                 }
             });
 
-            services.AddScoped<IPermisosRepository, PermisosRepository>();
+            services.AddScoped<IAppDbContext>(
+                serviceProvider => serviceProvider.GetRequiredService<AppDbContext>());
 
             return services;
         }

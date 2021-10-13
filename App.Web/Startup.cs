@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using App.Database;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace App.Web
 {
@@ -25,7 +26,27 @@ namespace App.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddRazorPages()
+                .AddRazorRuntimeCompilation()
+                .AddRazorPagesOptions(options =>
+                {
+                    //Use the below line to change the default directory
+                    //for your Razor Pages.
+                    //options.RootDirectory = "/App.Web.Pages";
+
+                    ////Use the below line to change the default
+                    ////"landing page" of the application.
+                    //options.Conventions.AddPageRoute("/App.Web.Pages/Index", "");
+                });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie("Cookies", options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.ReturnUrlParameter = "ReturnUrl";
+            });
 
             services.LoadDatabase(Configuration);
         }
@@ -49,6 +70,7 @@ namespace App.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

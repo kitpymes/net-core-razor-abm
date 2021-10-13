@@ -1,0 +1,68 @@
+﻿@page
+@model App.Web.Permission.IndexModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Empleados";
+}
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Permissions[0].Id)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Permissions[0].Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Permissions[0].Surname)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Permissions[0].Date)
+            </th>
+            <th scope="col">
+                Tipo de Permiso
+            </th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Permissions)
+        {
+        <tr scope="row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermissionType.Descripcion)
+            </td>
+            <td class="text-right">
+                <a class="btn btn-danger"
+                   asp-area="Permission"
+                   asp-page="./Remove"
+                   asp-route-id="@item.Id">
+                    Eliminar Permiso
+                </a>
+
+                <a class="btn btn-outline-primary"
+                   asp-page="./Edit"
+                   asp-route-id="@item.Id">
+                    Editar Permiso
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-area="Permission" asp-page="Create"> Crear Permiso</a>
+

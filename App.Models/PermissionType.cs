@@ -2,9 +2,9 @@
 
 namespace App.Models
 {
-    public class TipoPermiso : EntityBase
+    public class PermissionType : EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "Este campo es requerido.")]
         public string Descripcion { get; private set; }
     }
 }

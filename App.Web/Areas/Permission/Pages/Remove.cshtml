@@ -1,13 +1,14 @@
 ﻿@page
-@model EliminarPermisoModel
+@model App.Web.Permission.RemoveModel
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Eliminar Permiso";
 }
 
 <div class="container d-flex justify-content-center">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Eliminar Permiso</h5>
+            <h5 class="card-title">@ViewData["Title"]</h5>
 
             <h6 class="card-subtitle mb-2 text-muted">Esta seguro de eliminar el permiso ?</h6>
 
@@ -20,39 +21,39 @@
             <div class="col-12">
                 <dl class="row">
                     <dt class="col-7">
-                        @Html.DisplayNameFor(model => model.Permiso.NombreEmpleado)
+                        @Html.DisplayNameFor(model => model.Permission.Name)
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.Permiso.NombreEmpleado)
+                        @Html.DisplayFor(model => model.Permission.Name)
                     </dd>
                 </dl>
                 <dl class="row">
                     <dt class="col-7">
-                        @Html.DisplayNameFor(model => model.Permiso.ApellidoEmpleado)
+                        @Html.DisplayNameFor(model => model.Permission.Surname)
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.Permiso.ApellidoEmpleado)
+                        @Html.DisplayFor(model => model.Permission.Surname)
                     </dd>
                 </dl>
                 <dl class="row">
                     <dt class="col-7">
-                        @Html.DisplayNameFor(model => model.Permiso.FechaPermiso)
+                        @Html.DisplayNameFor(model => model.Permission.Date)
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.Permiso.FechaPermiso)
+                        @Html.DisplayFor(model => model.Permission.Date)
                     </dd>
                 </dl>
                 <dl class="row">
                     <dt class="col-7">
-                        @Html.DisplayNameFor(model => model.Permiso.TipoPermiso.Descripcion)
+                        @Html.DisplayNameFor(model => model.Permission.PermissionType.Descripcion)
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.Permiso.TipoPermiso.Descripcion)
+                        @Html.DisplayFor(model => model.Permission.PermissionType.Descripcion)
                     </dd>
                 </dl>
 
                 <form method="post">
-                    <input type="hidden" asp-for="Permiso.Id" />
+                    <input type="hidden" asp-for="Permission.Id" />
                     <input type="submit" value="Eliminar" class="btn btn-danger" /> |
                     <a asp-page="./Index">Cancelar</a>
                 </form>
@@ -60,4 +61,3 @@
         </div>
     </div>
 </div>
-

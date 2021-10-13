@@ -1,0 +1,57 @@
+﻿@page
+@model App.Web.Permission.CreateModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Crear Permiso";
+}
+
+<div class="container d-flex justify-content-center">
+    <div class="card w-50">
+        <div class="card-body">
+            <h5 class="card-title">@ViewData["Title"]</h5>
+
+            <hr />
+
+            <div class="col-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Permision.Name" class="control-label"></label>
+                        <input asp-for="Permision.Name" class="form-control" />
+                        <span asp-validation-for="Permision.Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Permision.Surname" class="control-label"></label>
+                        <input asp-for="Permision.Surname" class="form-control" />
+                        <span asp-validation-for="Permision.Surname" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Permision.PermissionTypeId" class="control-label"></label>
+                        <select asp-for="Permision.PermissionTypeId" class="form-control">
+                            <option value="1">Enfermedad</option>
+                            <option value="2">Licencia</option>
+                            <option value="3">Trámites</option>
+                        </select>
+                        <span asp-validation-for="Permision.PermissionTypeId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Permision.Date" class="control-label"></label>
+                        <input asp-for="Permision.Date" class="form-control" />
+                        <span asp-validation-for="Permision.Date" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Crear" class="btn btn-primary" /> |
+                        <a asp-page="./Index">Cancelar</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
